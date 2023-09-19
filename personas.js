@@ -10,11 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const divCard = document.createElement('div');
         divCard.classList.add('card', 'mb-3','bg-dark','text-white');
 
-         // Reemplazar "http" por "https" en la URL de la imagen
-         const imageUrl = persona.contentUrl.replace('http://', 'https://');
+       
+        const imageUrl = persona.contentUrl;
+
+        
+        const imageUrlHttps = imageUrl.replace('http://', 'https://');
 
         const imagen = document.createElement('img');
-        imagen.src = persona.contentUrl;
+        imagen.src = imageUrlHttps;
         imagen.classList.add('card-img-top');
         divCard.appendChild(imagen);
 
