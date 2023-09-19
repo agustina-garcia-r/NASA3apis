@@ -9,24 +9,26 @@
 </head>
 <body class="bg-light">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-transparent">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="pngegg.png" alt="Logo Luna" width="40" height="40">
-        </a>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="APOD.html">APOD</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Personasenespacio.html">People in space rn.</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="searching.html">Gallery</a>
-            </li>
-        </ul>
+      <a class="navbar-brand" href="#">
+        <img src="pngegg.png" alt="Logo Luna" width="40" height="40">
+      </a>
+  
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="APOD.html">APOD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" href="Personasenespacio.html">People in space</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" href="searching.html">Gallery</a>
+        </li>
+      </ul>
     </div>
-</nav>
+  </nav>
+  
 <div class="container mt-4">
     <h1 class="display-4">Search Images</h1>
     <div id="Buscar" class="mt-4">
@@ -37,53 +39,19 @@
     </div>
     <div id="Galeria"></div>
 </div>
+
+<footer class="bg-transparent text-white fixed-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy; 2023 Agustina García - Jóvenes a Programar </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    //busco input por id y lo almaceno en const busqueda
-    const busqueda = document.getElementById('buscarImagen');
-     //busco boton por id y lo almaceno en const botoncitop
-    const botoncitop = document.getElementById('botonnn');
-     //busco div por id y lo almaceno en const galeria
-    const galeria = document.getElementById('Galeria');
-//creo un addeventlistener al boton
-    botoncitop.addEventListener('click', function () {
-        //almaceno dentro de la cte query el valor del input q le da el usuario cuando busca algo, ejemplo si busca saturnoo ahora query=saturno
-        const query = busqueda.value;
-        //deifno la url de la api en una cte
-        const API_URL = 'https://images-api.nasa.gov';
 
-        // fetch al endpoint para poder buscar cosas
-        fetch(`${API_URL}/search?q=${query}`)
-            .then(response => response.json())
-            .then(data => {
-                galeria.innerHTML = ''; // limpiar contenido anterior
 
-                //seentra a collection y luego a items del json y se hace un foreach
-                data.collection.items.forEach(item => {
-                    //si existe links dentro de item entonces...
-                    if (item.links)  {
-                        // entra a item, luego a links en la posición 0 y luego a href (que es la ruta que es .jpg sino el otro href de la posicion 1 era .srt)
-                        //al entrar se le guarda lo que contiene en la cte imgSrc
-                        const imgSrc = item.links[0].href;
-                        //se crea un elemento imagen y se guarda en imgElement
-                        const imgElement = document.createElement('img');
-                        //el src de dicho elemento tipo imagen es imgSRC (lo que se guardo anteriormente del href q era .jpg en la posicoin 0 de links)
-                        imgElement.src = imgSrc;
-                        //se le agregan clases
-                        imgElement.classList.add('img-fluid', 'rounded', 'mb-3');
-                         //se guarda el imgElement en el div galeria
-                        galeria.appendChild(imgElement);
-                    }
-                });
-            })
-            .catch(error => {
-                // por si hay errores
-                console.error('Error al realizar la búsqueda:', error);
-            });
-    });
-});
-</script>
 <style>
     body {
 background-image: url('https://www.adamblockphotos.com/uploads/4/4/2/5/44258693/ic239.jpg');
@@ -93,4 +61,5 @@ color: white
 
 
 </style>
+<script src="searching.js"></script>
 </html>

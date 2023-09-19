@@ -11,28 +11,26 @@
   <body class="bg-light">
    
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-transparent">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="pngegg.png" alt="Logo Luna" width="40" height="40">
-            </a>
-
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="APOD.html">APOD</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="Personasenespacio.html">People in space rn.</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="searching.html">Gallery</a>
-                </li>
-                
-            </ul>
+          <a class="navbar-brand" href="#">
+            <img src="pngegg.png" alt="Logo Luna" width="40" height="40">
+          </a>
+      
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="APOD.html">APOD</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-white" href="Personasenespacio.html">People in space rn.</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-white" href="searching.html">Gallery</a>
+            </li>
+          </ul>
         </div>
-    </nav>
+      </nav>
+      
     <div class="container mt-4">
         <h1 class="display-4">Astronomy picture of the day!</h1>
         <div id="acavalafoto" class="mt-4">
@@ -40,67 +38,7 @@
         <button id="botoncitooo" class="btn btn-light">Click me!</button>
     </div>
 
-    <script>
-const API_KEY = 'uCg6Zdp7QAgxQKstIyClUtDBq236OzhK14oVi9Za';
-const boton =  document.getElementById('botoncitooo')
-const downloadLink = document.getElementById('download-link');
-
-       boton.addEventListener('click', () => {
-            const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const acavalafotoDiv = document.getElementById('acavalafoto');
-                    acavalafotoDiv.innerHTML = ''; 
-                    //creo el titulo con un h2 y le indico que se encuentra en el title del json 
-                    const tituloimagen = document.createElement('h2');
-                   tituloimagen.textContent = data.title
-
-                   const fecha = document.createElement('p');
-                   fecha.textContent = data.date;
-
-
-                const mensaje = document.createElement('p');
-                mensaje.textContent = `Discover the cosmos today \u{1F314} ${data.date}! :)`;
-
-                 //Creo un elemento tipo imágen
-                    const imagen = document.createElement('img');
-                    //le indico q el source de la imagen está en url de la data (el json)
-                    imagen.src = data.url;
-                   
-                    //le agrego clases 
-                    imagen.classList.add('img-fluid', 'rounded', 'shadow');
-
-                    // Creo la explicación
-                   const explicacion = document.createElement('p');
-                   //el contenido de explicacion va a ser explanation el json
-                    explicacion.textContent = data.explanation;
-
-                    const autor = document.createElement('p')
-                    autor.textContent = "Author: " + data.copyright;
-
-                    boton.textContent = "Download"
-
-                    // agrego los elementos al acavalafotodiv
-                    acavalafotoDiv.appendChild(mensaje);
-                    acavalafotoDiv.appendChild(tituloimagen);
-                    acavalafotoDiv.appendChild(explicacion);
-                    acavalafotoDiv.appendChild(imagen);
-                    acavalafotoDiv.appendChild(autor);
-                
-
-                    boton.style.display = 'none';
-                
-            })
-                   
-                
-                .catch(error => {
-                    console.error('Error al obtener datos:', error);
-                });
-        });
-
-    </script>
+  
 <style>
     body {
 background-image: url('https://www.adamblockphotos.com/uploads/4/4/2/5/44258693/ic239.jpg');
@@ -110,6 +48,18 @@ color: white
 
 
 </style>
+  <script src="apod.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+     <footer class="bg-transparent text-white fixed-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p>&copy; 2023 Agustina García - Jóvenes a Programar </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+      
+    </body>
 </html>
