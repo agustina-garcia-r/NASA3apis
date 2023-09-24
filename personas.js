@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const imageUrl = persona.thumbnailUrl || persona.contentUrl;
 
         
-        const imageUrlHttps = imageUrl.replace('http://', 'https://');
 
         const imagen = document.createElement('img');
         imagen.src = imageUrl;
