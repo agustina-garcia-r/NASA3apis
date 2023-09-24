@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const divCard = document.createElement('div');
         divCard.classList.add('card', 'mb-3','bg-dark','text-white');
 
-       //si no funciona una url con la foto, entonces la otra alternativa
-        const imageUrl =   persona.contentUrl || persona.thumbnailUrl
+       
+        const imageUrl = persona.thumbnailUrl || persona.contentUrl;
 
         
 
