@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         divCard.classList.add('card', 'mb-3','bg-dark','text-white');
 
        
-        const imageUrl = persona.thumbnailUrl || persona.contentUrl;
+        const imageUrl = persona.contentUrl || persona.thumbnailUrl;
 
         
 
